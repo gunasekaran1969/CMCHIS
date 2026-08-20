@@ -1,0 +1,391 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CMCHIS Online Application | Tamil Nadu</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f2f6fb;
+    color:#222;
+}
+
+header{
+    background:linear-gradient(135deg,#0d47a1,#1976d2);
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+}
+
+header h1{
+    margin:0;
+    font-size:26px;
+}
+
+header p{
+    margin:8px 0 0;
+    font-size:15px;
+}
+
+.container{
+    max-width:700px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    padding:22px;
+    margin-bottom:20px;
+    border-radius:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.10);
+}
+
+.card h2{
+    color:#0d47a1;
+    margin-top:0;
+    font-size:20px;
+    border-bottom:2px solid #e3eaf3;
+    padding-bottom:10px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:13px;
+    margin-top:7px;
+    border:1px solid #c8d1dc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#1976d2;
+}
+
+.radio-group{
+    display:flex;
+    gap:20px;
+    margin-top:10px;
+}
+
+.radio-group label{
+    margin:0;
+    font-weight:normal;
+}
+
+.radio-group input{
+    width:auto;
+}
+
+.info{
+    background:#e3f2fd;
+    border-left:5px solid #1976d2;
+    padding:14px;
+    border-radius:7px;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.upload-note{
+    font-size:13px;
+    color:#666;
+    margin-top:5px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0d47a1;
+}
+
+.success{
+    display:none;
+    background:#e8f5e9;
+    border-left:5px solid #2e7d32;
+    padding:18px;
+    border-radius:8px;
+    margin-top:20px;
+}
+
+.application-id{
+    font-size:20px;
+    font-weight:bold;
+    color:#1b5e20;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>CMCHIS Online Application</h1>
+    <p>Tamil Nadu Chief Minister's Comprehensive Health Insurance Scheme</p>
+</header>
+
+<div class="container">
+
+<div class="info">
+    <strong>Important:</strong><br>
+    This is an online application-assistance page.
+    Applicants should verify eligibility and submit information through the
+    official Tamil Nadu CMCHIS process where required.
+</div>
+
+<form id="cmchisForm">
+
+<div class="card">
+
+<h2>1. Applicant Details</h2>
+
+<label>Full Name *</label>
+<input type="text" id="name" required>
+
+<label>Father / Husband Name *</label>
+<input type="text" id="fatherName" required>
+
+<label>Date of Birth *</label>
+<input type="date" id="dob" required>
+
+<label>Gender *</label>
+<select id="gender" required>
+    <option value="">Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select>
+
+<label>Mobile Number *</label>
+<input type="tel"
+       id="mobile"
+       maxlength="10"
+       pattern="[0-9]{10}"
+       placeholder="10 digit mobile number"
+       required>
+
+</div>
+
+
+<div class="card">
+
+<h2>2. Family Details</h2>
+
+<label>Ration Card Number *</label>
+<input type="text" id="rationCard" required>
+
+<label>Family Members</label>
+<input type="number" id="familyMembers" min="1" max="20">
+
+<label>District *</label>
+<select id="district" required>
+    <option value="">Select District</option>
+    <option>Chennai</option>
+    <option>Coimbatore</option>
+    <option>Cuddalore</option>
+    <option>Dharmapuri</option>
+    <option>Dindigul</option>
+    <option>Erode</option>
+    <option>Kallakurichi</option>
+    <option>Kancheepuram</option>
+    <option>Karur</option>
+    <option>Krishnagiri</option>
+    <option>Madurai</option>
+    <option>Mayiladuthurai</option>
+    <option>Nagapattinam</option>
+    <option>Namakkal</option>
+    <option>Nilgiris</option>
+    <option>Perambalur</option>
+    <option>Pudukkottai</option>
+    <option>Ramanathapuram</option>
+    <option>Ranipet</option>
+    <option>Salem</option>
+    <option>Sivaganga</option>
+    <option>Tenkasi</option>
+    <option>Thanjavur</option>
+    <option>Theni</option>
+    <option>Thoothukudi</option>
+    <option>Tiruchirappalli</option>
+    <option>Tirunelveli</option>
+    <option>Tirupathur</option>
+    <option>Tiruppur</option>
+    <option>Tiruvallur</option>
+    <option>Tiruvannamalai</option>
+    <option>Tiruvarur</option>
+    <option>Vellore</option>
+    <option>Viluppuram</option>
+    <option>Virudhunagar</option>
+</select>
+
+<label>Address *</label>
+<textarea id="address" rows="4" required></textarea>
+
+</div>
+
+
+<div class="card">
+
+<h2>3. Identification Details</h2>
+
+<label>Aadhaar Number</label>
+<input type="text"
+       id="aadhaar"
+       maxlength="12"
+       pattern="[0-9]{12}"
+       placeholder="12 digit Aadhaar number">
+
+<div class="info" style="margin-top:15px;">
+    Do not share Aadhaar or other sensitive information with
+    unofficial persons or websites. Use the official government
+    process wherever authentication is required.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>4. Upload Documents</h2>
+
+<label>Ration Card</label>
+<input type="file" id="rationFile" accept=".jpg,.jpeg,.png,.pdf">
+
+<p class="upload-note">
+Accepted formats: JPG, PNG, PDF
+</p>
+
+<label>Aadhaar Document</label>
+<input type="file" id="aadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+
+<p class="upload-note">
+Upload only documents that are required for the official application process.
+</p>
+
+<label>Other Supporting Document</label>
+<input type="file" id="otherFile" accept=".jpg,.jpeg,.png,.pdf">
+
+</div>
+
+
+<div class="card">
+
+<h2>5. Declaration</h2>
+
+<div class="radio-group">
+
+<label>
+<input type="checkbox" id="declaration" required>
+I confirm that the information provided by me is correct.
+</label>
+
+</div>
+
+<br>
+
+<button type="submit">
+    Submit Application
+</button>
+
+<div class="success" id="successMessage">
+
+    <h3>Application Submitted</h3>
+
+    <p>
+        Your application information has been recorded.
+    </p>
+
+    <p>
+        Application ID:
+        <span class="application-id" id="applicationId"></span>
+    </p>
+
+    <p>
+        Please save this Application ID for future reference.
+    </p>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<footer>
+    CMCHIS Application Assistance Portal<br>
+    This website is not an official Government of Tamil Nadu website.
+</footer>
+
+
+<script>
+
+document.getElementById("cmchisForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const declaration = document.getElementById("declaration");
+
+    if(!declaration.checked){
+        alert("Please accept the declaration.");
+        return;
+    }
+
+    // Generate a temporary application ID
+    const randomNumber =
+        Math.floor(100000 + Math.random() * 900000);
+
+    const applicationID =
+        "CMCHIS-" + new Date().getFullYear() + "-" + randomNumber;
+
+    document.getElementById("applicationId").textContent =
+        applicationID;
+
+    document.getElementById("successMessage").style.display =
+        "block";
+
+    window.scrollTo({
+        top:document.body.scrollHeight,
+        behavior:"smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+```
