@@ -2,19 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CMCHIS Online Application | Tamil Nadu</title>
+<title>CMCHIS Online Application</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
 
 body{
     margin:0;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#f2f6fb;
     color:#222;
 }
@@ -28,12 +30,12 @@ header{
 
 header h1{
     margin:0;
-    font-size:26px;
+    font-size:25px;
 }
 
 header p{
     margin:8px 0 0;
-    font-size:15px;
+    font-size:14px;
 }
 
 .container{
@@ -47,15 +49,15 @@ header p{
     padding:22px;
     margin-bottom:20px;
     border-radius:14px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.10);
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
 }
 
 .card h2{
     color:#0d47a1;
     margin-top:0;
-    font-size:20px;
     border-bottom:2px solid #e3eaf3;
     padding-bottom:10px;
+    font-size:20px;
 }
 
 label{
@@ -65,7 +67,9 @@ label{
     font-size:14px;
 }
 
-input, select, textarea{
+input,
+select,
+textarea{
     width:100%;
     padding:13px;
     margin-top:7px;
@@ -74,26 +78,8 @@ input, select, textarea{
     font-size:16px;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#1976d2;
-}
-
-.radio-group{
-    display:flex;
-    gap:20px;
-    margin-top:10px;
-}
-
-.radio-group label{
-    margin:0;
-    font-weight:normal;
-}
-
-.radio-group input{
-    width:auto;
+textarea{
+    resize:vertical;
 }
 
 .info{
@@ -105,10 +91,13 @@ textarea:focus{
     line-height:1.5;
 }
 
-.upload-note{
-    font-size:13px;
-    color:#666;
-    margin-top:5px;
+.warning{
+    background:#fff8e1;
+    border-left:5px solid #ff9800;
+    padding:14px;
+    border-radius:7px;
+    margin-bottom:20px;
+    line-height:1.5;
 }
 
 button{
@@ -127,6 +116,11 @@ button:hover{
     background:#0d47a1;
 }
 
+button:disabled{
+    background:#999;
+    cursor:not-allowed;
+}
+
 .success{
     display:none;
     background:#e8f5e9;
@@ -142,249 +136,561 @@ button:hover{
     color:#1b5e20;
 }
 
+.error{
+    display:none;
+    background:#ffebee;
+    border-left:5px solid #c62828;
+    padding:15px;
+    border-radius:8px;
+    margin-top:20px;
+    color:#b71c1c;
+}
+
 footer{
     text-align:center;
     padding:20px;
     color:#666;
     font-size:13px;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <h1>CMCHIS Online Application</h1>
-    <p>Tamil Nadu Chief Minister's Comprehensive Health Insurance Scheme</p>
+
+<h1>CMCHIS Online Application</h1>
+
+<p>
+Tamil Nadu Chief Minister's Comprehensive Health Insurance Scheme
+</p>
+
 </header>
+
 
 <div class="container">
 
-<div class="info">
-    <strong>Important:</strong><br>
-    This is an online application-assistance page.
-    Applicants should verify eligibility and submit information through the
-    official Tamil Nadu CMCHIS process where required.
+
+<div class="warning">
+
+<strong>Important:</strong><br>
+
+This is an application-assistance website and is not an
+official Government of Tamil Nadu website.
+
+Do not enter real Aadhaar, medical or other sensitive information
+until the security configuration has been completed.
+
 </div>
 
+
 <form id="cmchisForm">
+
+
+<!-- APPLICANT -->
 
 <div class="card">
 
 <h2>1. Applicant Details</h2>
 
-<label>Full Name *</label>
-<input type="text" id="name" required>
 
-<label>Father / Husband Name *</label>
-<input type="text" id="fatherName" required>
+<label>
+Full Name *
+</label>
 
-<label>Date of Birth *</label>
-<input type="date" id="dob" required>
+<input
+type="text"
+id="name"
+required
+>
 
-<label>Gender *</label>
-<select id="gender" required>
-    <option value="">Select Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
+
+<label>
+Father / Husband Name *
+</label>
+
+<input
+type="text"
+id="fatherName"
+required
+>
+
+
+<label>
+Date of Birth *
+</label>
+
+<input
+type="date"
+id="dob"
+required
+>
+
+
+<label>
+Gender *
+</label>
+
+<select
+id="gender"
+required
+>
+
+<option value="">
+Select Gender
+</option>
+
+<option value="Male">
+Male
+</option>
+
+<option value="Female">
+Female
+</option>
+
+<option value="Other">
+Other
+</option>
+
 </select>
 
-<label>Mobile Number *</label>
-<input type="tel"
-       id="mobile"
-       maxlength="10"
-       pattern="[0-9]{10}"
-       placeholder="10 digit mobile number"
-       required>
+
+<label>
+Mobile Number *
+</label>
+
+<input
+type="tel"
+id="mobile"
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="10 digit mobile number"
+required
+>
 
 </div>
 
+
+<!-- FAMILY -->
 
 <div class="card">
 
 <h2>2. Family Details</h2>
 
-<label>Ration Card Number *</label>
-<input type="text" id="rationCard" required>
 
-<label>Family Members</label>
-<input type="number" id="familyMembers" min="1" max="20">
+<label>
+Ration Card Number *
+</label>
 
-<label>District *</label>
-<select id="district" required>
-    <option value="">Select District</option>
-    <option>Chennai</option>
-    <option>Coimbatore</option>
-    <option>Cuddalore</option>
-    <option>Dharmapuri</option>
-    <option>Dindigul</option>
-    <option>Erode</option>
-    <option>Kallakurichi</option>
-    <option>Kancheepuram</option>
-    <option>Karur</option>
-    <option>Krishnagiri</option>
-    <option>Madurai</option>
-    <option>Mayiladuthurai</option>
-    <option>Nagapattinam</option>
-    <option>Namakkal</option>
-    <option>Nilgiris</option>
-    <option>Perambalur</option>
-    <option>Pudukkottai</option>
-    <option>Ramanathapuram</option>
-    <option>Ranipet</option>
-    <option>Salem</option>
-    <option>Sivaganga</option>
-    <option>Tenkasi</option>
-    <option>Thanjavur</option>
-    <option>Theni</option>
-    <option>Thoothukudi</option>
-    <option>Tiruchirappalli</option>
-    <option>Tirunelveli</option>
-    <option>Tirupathur</option>
-    <option>Tiruppur</option>
-    <option>Tiruvallur</option>
-    <option>Tiruvannamalai</option>
-    <option>Tiruvarur</option>
-    <option>Vellore</option>
-    <option>Viluppuram</option>
-    <option>Virudhunagar</option>
+<input
+type="text"
+id="rationCard"
+required
+>
+
+
+<label>
+Number of Family Members
+</label>
+
+<input
+type="number"
+id="familyMembers"
+min="1"
+max="20"
+>
+
+
+<label>
+District *
+</label>
+
+<select
+id="district"
+required
+>
+
+<option value="">
+Select District
+</option>
+
+<option>Chennai</option>
+<option>Coimbatore</option>
+<option>Cuddalore</option>
+<option>Dharmapuri</option>
+<option>Dindigul</option>
+<option>Erode</option>
+<option>Kallakurichi</option>
+<option>Kancheepuram</option>
+<option>Karur</option>
+<option>Krishnagiri</option>
+<option>Madurai</option>
+<option>Mayiladuthurai</option>
+<option>Nagapattinam</option>
+<option>Namakkal</option>
+<option>Nilgiris</option>
+<option>Perambalur</option>
+<option>Pudukkottai</option>
+<option>Ramanathapuram</option>
+<option>Ranipet</option>
+<option>Salem</option>
+<option>Sivaganga</option>
+<option>Tenkasi</option>
+<option>Thanjavur</option>
+<option>Theni</option>
+<option>Thoothukudi</option>
+<option>Tiruchirappalli</option>
+<option>Tirunelveli</option>
+<option>Tirupathur</option>
+<option>Tiruppur</option>
+<option>Tiruvallur</option>
+<option>Tiruvannamalai</option>
+<option>Tiruvarur</option>
+<option>Vellore</option>
+<option>Viluppuram</option>
+<option>Virudhunagar</option>
+
 </select>
 
-<label>Address *</label>
-<textarea id="address" rows="4" required></textarea>
+
+<label>
+Address *
+</label>
+
+<textarea
+id="address"
+rows="4"
+required
+></textarea>
 
 </div>
 
+
+<!-- IDENTIFICATION -->
 
 <div class="card">
 
 <h2>3. Identification Details</h2>
 
-<label>Aadhaar Number</label>
-<input type="text"
-       id="aadhaar"
-       maxlength="12"
-       pattern="[0-9]{12}"
-       placeholder="12 digit Aadhaar number">
-
-<div class="info" style="margin-top:15px;">
-    Do not share Aadhaar or other sensitive information with
-    unofficial persons or websites. Use the official government
-    process wherever authentication is required.
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>4. Upload Documents</h2>
-
-<label>Ration Card</label>
-<input type="file" id="rationFile" accept=".jpg,.jpeg,.png,.pdf">
-
-<p class="upload-note">
-Accepted formats: JPG, PNG, PDF
-</p>
-
-<label>Aadhaar Document</label>
-<input type="file" id="aadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
-
-<p class="upload-note">
-Upload only documents that are required for the official application process.
-</p>
-
-<label>Other Supporting Document</label>
-<input type="file" id="otherFile" accept=".jpg,.jpeg,.png,.pdf">
-
-</div>
-
-
-<div class="card">
-
-<h2>5. Declaration</h2>
-
-<div class="radio-group">
 
 <label>
-<input type="checkbox" id="declaration" required>
-I confirm that the information provided by me is correct.
+Aadhaar Number
 </label>
 
+<input
+type="text"
+id="aadhaar"
+maxlength="12"
+pattern="[0-9]{12}"
+placeholder="12 digit Aadhaar number"
+>
+
+
+<div class="warning">
+
+For testing, please leave Aadhaar blank.
+
+We will configure proper security and authentication
+before using real applicant information.
+
 </div>
+
+</div>
+
+
+<!-- DECLARATION -->
+
+<div class="card">
+
+<h2>4. Declaration</h2>
+
+<label>
+
+<input
+type="checkbox"
+id="declaration"
+required
+style="width:auto;"
+>
+
+I confirm that the information provided by me is correct.
+
+</label>
+
 
 <br>
 
-<button type="submit">
-    Submit Application
+
+<button
+type="submit"
+id="submitButton"
+>
+
+Submit Application
+
 </button>
 
-<div class="success" id="successMessage">
 
-    <h3>Application Submitted</h3>
+<div
+class="success"
+id="successMessage"
+>
 
-    <p>
-        Your application information has been recorded.
-    </p>
+<h3>
+Application Submitted Successfully
+</h3>
 
-    <p>
-        Application ID:
-        <span class="application-id" id="applicationId"></span>
-    </p>
+<p>
+Your application has been recorded.
+</p>
 
-    <p>
-        Please save this Application ID for future reference.
-    </p>
+<p>
+Application ID:
+</p>
+
+<div
+class="application-id"
+id="applicationId"
+></div>
+
+<p>
+Please save this Application ID.
+</p>
 
 </div>
 
+
+<div
+class="error"
+id="errorMessage"
+></div>
+
 </div>
+
 
 </form>
 
 </div>
 
+
 <footer>
-    CMCHIS Application Assistance Portal<br>
-    This website is not an official Government of Tamil Nadu website.
+
+CMCHIS Application Assistance Portal<br>
+
+This website is not an official Government of Tamil Nadu website.
+
 </footer>
 
 
-<script>
+<!-- FIREBASE -->
 
-document.getElementById("cmchisForm").addEventListener("submit", function(event){
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+/* FIREBASE CONFIGURATION */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyABdobLpFZ6WaJ4kE8HQZMBmTUmfRJCbJY",
+
+    authDomain:
+    "cmchis-online-application.firebaseapp.com",
+
+    projectId:
+    "cmchis-online-application",
+
+    storageBucket:
+    "cmchis-online-application.firebasestorage.app",
+
+    messagingSenderId:
+    "275696534195",
+
+    appId:
+    "1:275696534195:web:f381966c7b5c44036a26c6",
+
+    measurementId:
+    "G-RSY7T0RVTD"
+
+};
+
+
+/* INITIALIZE FIREBASE */
+
+const app =
+initializeApp(firebaseConfig);
+
+
+/* INITIALIZE FIRESTORE */
+
+const db =
+getFirestore(app);
+
+
+/* FORM */
+
+const form =
+document.getElementById("cmchisForm");
+
+const submitButton =
+document.getElementById("submitButton");
+
+const successMessage =
+document.getElementById("successMessage");
+
+const errorMessage =
+document.getElementById("errorMessage");
+
+const applicationId =
+document.getElementById("applicationId");
+
+
+/* SUBMIT */
+
+form.addEventListener(
+"submit",
+async function(event){
 
     event.preventDefault();
 
-    const declaration = document.getElementById("declaration");
 
-    if(!declaration.checked){
-        alert("Please accept the declaration.");
-        return;
-    }
+    submitButton.disabled = true;
 
-    // Generate a temporary application ID
-    const randomNumber =
-        Math.floor(100000 + Math.random() * 900000);
+    submitButton.textContent =
+    "Submitting...";
 
-    const applicationID =
-        "CMCHIS-" + new Date().getFullYear() + "-" + randomNumber;
+    errorMessage.style.display =
+    "none";
 
-    document.getElementById("applicationId").textContent =
-        applicationID;
 
-    document.getElementById("successMessage").style.display =
+    try{
+
+        const applicationNumber =
+
+        "CMCHIS-" +
+        new Date().getFullYear() +
+        "-" +
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+
+        const applicationData = {
+
+            applicationId:
+            applicationNumber,
+
+            name:
+            document.getElementById("name").value.trim(),
+
+            fatherName:
+            document.getElementById("fatherName").value.trim(),
+
+            dob:
+            document.getElementById("dob").value,
+
+            gender:
+            document.getElementById("gender").value,
+
+            mobile:
+            document.getElementById("mobile").value.trim(),
+
+            rationCard:
+            document.getElementById("rationCard").value.trim(),
+
+            familyMembers:
+            document.getElementById("familyMembers").value,
+
+            district:
+            document.getElementById("district").value,
+
+            address:
+            document.getElementById("address").value.trim(),
+
+            aadhaar:
+            document.getElementById("aadhaar").value.trim(),
+
+            status:
+            "Pending",
+
+            submittedAt:
+            new Date().toISOString()
+
+        };
+
+
+        /* SAVE TO FIRESTORE */
+
+        await addDoc(
+            collection(db,"applications"),
+            applicationData
+        );
+
+
+        /* SHOW SUCCESS */
+
+        applicationId.textContent =
+        applicationNumber;
+
+        successMessage.style.display =
         "block";
 
-    window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:"smooth"
-    });
+        submitButton.style.display =
+        "none";
+
+
+        window.scrollTo({
+
+            top:
+            document.body.scrollHeight,
+
+            behavior:
+            "smooth"
+
+        });
+
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        errorMessage.textContent =
+
+        "Application could not be submitted. " +
+        "Please check your Firebase Firestore rules and try again.";
+
+
+        errorMessage.style.display =
+        "block";
+
+
+        submitButton.disabled =
+        false;
+
+        submitButton.textContent =
+        "Submit Application";
+
+    }
 
 });
 
 </script>
+
 
 </body>
 </html>
