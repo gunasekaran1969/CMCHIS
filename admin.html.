@@ -2,14 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CMCHIS Admin Dashboard</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -37,7 +35,6 @@ header p{
     margin:7px 0 0;
     font-size:14px;
 }
-
 
 /* LOGIN */
 
@@ -83,16 +80,11 @@ button{
     font-size:16px;
 }
 
-.login-btn:hover{
-    background:#0d47a1;
-}
-
 .error{
     color:#c62828;
     text-align:center;
     margin-top:12px;
 }
-
 
 /* DASHBOARD */
 
@@ -126,7 +118,6 @@ button{
     margin-right:8px;
 }
 
-
 /* STATISTICS */
 
 .cards{
@@ -156,7 +147,6 @@ button{
     color:#0d47a1;
 }
 
-
 /* SEARCH */
 
 .search-box{
@@ -169,7 +159,6 @@ button{
 .search-box input{
     margin:0;
 }
-
 
 /* TABLE */
 
@@ -197,10 +186,6 @@ th{
 td{
     padding:11px;
     border-bottom:1px solid #ddd;
-}
-
-tr:hover{
-    background:#f5f8fc;
 }
 
 .status{
@@ -234,7 +219,6 @@ tr:hover{
     background:#d32f2f;
     color:white;
 }
-
 
 /* MODAL */
 
@@ -286,7 +270,6 @@ tr:hover{
     margin-top:10px;
 }
 
-
 /* MOBILE */
 
 @media(max-width:800px){
@@ -312,40 +295,26 @@ tr:hover{
     }
 
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <header>
-
 <h1>CMCHIS Admin Dashboard</h1>
-
-<p>
-Application Management System
-</p>
-
+<p>Application Management System</p>
 </header>
 
 
 <!-- LOGIN -->
 
-<div
-class="login-container"
-id="loginPage"
->
+<div class="login-container" id="loginPage">
 
 <div class="login-box">
 
 <h2>Admin Login</h2>
 
-
-<label>
-Admin Email
-</label>
+<label>Admin Email</label>
 
 <input
 type="email"
@@ -353,10 +322,7 @@ id="email"
 placeholder="Enter admin email"
 >
 
-
-<label>
-Password
-</label>
+<label>Password</label>
 
 <input
 type="password"
@@ -364,16 +330,12 @@ id="password"
 placeholder="Enter password"
 >
 
-
 <button
 class="login-btn"
 id="loginButton"
 >
-
 Login
-
 </button>
-
 
 <div
 class="error"
@@ -381,32 +343,19 @@ id="loginError"
 ></div>
 
 </div>
-
 </div>
 
 
 <!-- DASHBOARD -->
 
-<div
-id="dashboard"
-class="container"
->
-
+<div id="dashboard" class="container">
 
 <div class="top-bar">
 
 <div>
-
-<h2>
-Applications
-</h2>
-
-<p>
-CMCHIS application management
-</p>
-
+<h2>Applications</h2>
+<p>CMCHIS application management</p>
 </div>
-
 
 <div>
 
@@ -434,54 +383,23 @@ Logout
 <div class="cards">
 
 <div class="stat-card">
-
-<h3>
-Total Applications
-</h3>
-
-<p id="totalCount">
-0
-</p>
-
+<h3>Total Applications</h3>
+<p id="totalCount">0</p>
 </div>
 
-
 <div class="stat-card">
-
-<h3>
-Pending
-</h3>
-
-<p id="pendingCount">
-0
-</p>
-
+<h3>Pending</h3>
+<p id="pendingCount">0</p>
 </div>
 
-
 <div class="stat-card">
-
-<h3>
-Verified
-</h3>
-
-<p id="verifiedCount">
-0
-</p>
-
+<h3>Verified</h3>
+<p id="verifiedCount">0</p>
 </div>
 
-
 <div class="stat-card">
-
-<h3>
-Rejected
-</h3>
-
-<p id="rejectedCount">
-0
-</p>
-
+<h3>Rejected</h3>
+<p id="rejectedCount">0</p>
 </div>
 
 </div>
@@ -500,7 +418,7 @@ placeholder="Search Application ID, name or mobile..."
 </div>
 
 
-<!-- APPLICATION TABLE -->
+<!-- TABLE -->
 
 <div class="table-container">
 
@@ -509,41 +427,17 @@ placeholder="Search Application ID, name or mobile..."
 <thead>
 
 <tr>
-
-<th>
-Application ID
-</th>
-
-<th>
-Name
-</th>
-
-<th>
-Mobile
-</th>
-
-<th>
-District
-</th>
-
-<th>
-Status
-</th>
-
-<th>
-Action
-</th>
-
+<th>Application ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>District</th>
+<th>Status</th>
+<th>Action</th>
 </tr>
 
 </thead>
 
-
-<tbody
-id="applicationTable"
->
-
-</tbody>
+<tbody id="applicationTable"></tbody>
 
 </table>
 
@@ -552,7 +446,7 @@ id="applicationTable"
 </div>
 
 
-<!-- DETAILS -->
+<!-- DETAILS MODAL -->
 
 <div
 class="modal"
@@ -561,7 +455,6 @@ id="detailsModal"
 
 <div class="modal-content">
 
-
 <span
 class="close"
 id="closeModal"
@@ -569,39 +462,19 @@ id="closeModal"
 &times;
 </span>
 
+<h2>Application Details</h2>
 
-<h2>
-Application Details
-</h2>
+<div id="applicationDetails"></div>
 
+<label>Application Status</label>
 
-<div
-id="applicationDetails"
-></div>
+<select id="statusSelect">
 
-
-<label>
-Application Status
-</label>
-
-<select
-id="statusSelect"
->
-
-<option value="Pending">
-Pending
-</option>
-
-<option value="Verified">
-Verified
-</option>
-
-<option value="Rejected">
-Rejected
-</option>
+<option value="Pending">Pending</option>
+<option value="Verified">Verified</option>
+<option value="Rejected">Rejected</option>
 
 </select>
-
 
 <button
 class="update-btn"
@@ -610,41 +483,38 @@ id="updateStatusButton"
 Update Status
 </button>
 
-
+</div>
 </div>
 
-</div>
-
-
-<!-- FIREBASE -->
 
 <script type="module">
 
+/* FIREBASE */
 
 import {
-    initializeApp
+initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
+getAuth,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
 import {
-    getFirestore,
-    collection,
-    getDocs,
-    doc,
-    updateDoc,
-    deleteDoc
+getFirestore,
+collection,
+getDocs,
+doc,
+updateDoc,
+deleteDoc
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -654,39 +524,37 @@ from
 
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyABdobLpFZ6WaJ4kE8HQZMBmTUmfRJCbJY",
+apiKey:
+"AIzaSyABdobLpFZ6WaJ4kE8HQZMBmTUmfRJCbJY",
 
-    authDomain:
-    "cmchis-online-application.firebaseapp.com",
+authDomain:
+"cmchis-online-application.firebaseapp.com",
 
-    projectId:
-    "cmchis-online-application",
+projectId:
+"cmchis-online-application",
 
-    storageBucket:
-    "cmchis-online-application.firebasestorage.app",
+storageBucket:
+"cmchis-online-application.firebasestorage.app",
 
-    messagingSenderId:
-    "275696534195",
+messagingSenderId:
+"275696534195",
 
-    appId:
-    "1:275696534195:web:f381966c7b5c44036a26c6",
+appId:
+"1:275696534195:web:f381966c7b5c44036a26c6",
 
-    measurementId:
-    "G-RSY7T0RVTD"
+measurementId:
+"G-RSY7T0RVTD"
 
 };
 
 
-/* INITIALIZE */
+/* START FIREBASE */
 
 const app =
 initializeApp(firebaseConfig);
 
-
 const auth =
 getAuth(app);
-
 
 const db =
 getFirestore(app);
@@ -699,183 +567,139 @@ let applications = [];
 let selectedDocumentId = null;
 
 
-/* ELEMENTS */
-
-const loginPage =
-document.getElementById("loginPage");
-
-const dashboard =
-document.getElementById("dashboard");
-
-const loginButton =
-document.getElementById("loginButton");
-
-const logoutButton =
-document.getElementById("logoutButton");
-
-const refreshButton =
-document.getElementById("refreshButton");
-
-const loginError =
-document.getElementById("loginError");
-
-
 /* LOGIN */
 
-loginButton.addEventListener(
+document
+.getElementById("loginButton")
+.addEventListener(
 "click",
 async function(){
 
-    const email =
-    document.getElementById("email").value.trim();
+const email =
+document.getElementById("email").value.trim();
 
-    const password =
-    document.getElementById("password").value;
+const password =
+document.getElementById("password").value;
 
+const error =
+document.getElementById("loginError");
 
-    loginError.textContent = "";
+error.textContent = "";
 
+try{
 
-    if(!email || !password){
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-        loginError.textContent =
-        "Enter your email and password.";
+}
 
-        return;
+catch(error){
 
-    }
+console.error(error);
 
+document.getElementById(
+"loginError"
+).textContent =
+"Login failed. Check your email and password.";
 
-    loginButton.disabled =
-    true;
-
-    loginButton.textContent =
-    "Signing in...";
-
-
-    try{
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        loginError.textContent =
-        "Login failed. Check your email and password.";
-
-        loginButton.disabled =
-        false;
-
-        loginButton.textContent =
-        "Login";
-
-    }
+}
 
 });
 
 
-/* AUTH STATE */
+/* AUTH */
 
 onAuthStateChanged(
 auth,
 function(user){
 
-    if(user){
+if(user){
 
-        loginPage.style.display =
-        "none";
+document.getElementById(
+"loginPage"
+).style.display =
+"none";
 
-        dashboard.style.display =
-        "block";
+document.getElementById(
+"dashboard"
+).style.display =
+"block";
 
-        loadApplications();
+loadApplications();
 
-    }
+}
 
-    else{
+else{
 
-        loginPage.style.display =
-        "block";
+document.getElementById(
+"loginPage"
+).style.display =
+"block";
 
-        dashboard.style.display =
-        "none";
+document.getElementById(
+"dashboard"
+).style.display =
+"none";
 
-    }
+}
 
 });
 
 
-/* LOAD APPLICATIONS */
+/* LOAD */
 
 async function loadApplications(){
 
-    const table =
-    document.getElementById("applicationTable");
+const table =
+document.getElementById(
+"applicationTable"
+);
 
-    table.innerHTML =
-    "<tr><td colspan='6'>Loading applications...</td></tr>";
+table.innerHTML =
+"<tr><td colspan='6'>Loading...</td></tr>";
 
+try{
 
-    try{
+const snapshot =
+await getDocs(
+collection(
+db,
+"applications"
+)
+);
 
-        const snapshot =
-        await getDocs(
-            collection(db,"applications")
-        );
+applications = [];
 
+snapshot.forEach(
+function(item){
 
-        applications = [];
+applications.push({
 
+documentId:item.id,
 
-        snapshot.forEach(
-        function(documentSnapshot){
+...item.data()
 
-            applications.push({
+});
 
-                documentId:
-                documentSnapshot.id,
+});
 
-                ...documentSnapshot.data()
+displayApplications(
+applications
+);
 
-            });
+}
 
-        });
+catch(error){
 
+console.error(error);
 
-        applications.sort(
-        function(a,b){
+table.innerHTML =
+"<tr><td colspan='6'>Unable to load applications.</td></tr>";
 
-            return (
-                String(b.submittedAt || "")
-                .localeCompare(
-                    String(a.submittedAt || "")
-                )
-            );
-
-        });
-
-
-        displayApplications(
-            applications
-        );
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        table.innerHTML =
-        "<tr><td colspan='6'>Unable to load applications.</td></tr>";
-
-    }
+}
 
 }
 
@@ -884,260 +708,223 @@ async function loadApplications(){
 
 function displayApplications(data){
 
-    const table =
-    document.getElementById("applicationTable");
+const table =
+document.getElementById(
+"applicationTable"
+);
 
-    table.innerHTML = "";
-
-
-    if(data.length === 0){
-
-        table.innerHTML =
-        "<tr><td colspan='6'>No applications found.</td></tr>";
-
-        updateStatistics();
-
-        return;
-
-    }
+table.innerHTML = "";
 
 
-    data.forEach(
-    function(app){
+if(data.length === 0){
 
-        const row =
-        document.createElement("tr");
+table.innerHTML =
+"<tr><td colspan='6'>No applications found.</td></tr>";
 
+updateStatistics();
 
-        row.innerHTML = `
-
-            <td>
-                ${escapeHTML(app.applicationId || "")}
-            </td>
-
-            <td>
-                ${escapeHTML(app.name || "")}
-            </td>
-
-            <td>
-                ${escapeHTML(app.mobile || "")}
-            </td>
-
-            <td>
-                ${escapeHTML(app.district || "")}
-            </td>
-
-            <td>
-                <span class="status ${getStatusClass(app.status)}">
-                    ${escapeHTML(app.status || "Pending")}
-                </span>
-            </td>
-
-            <td>
-
-                <button
-                    class="view-btn"
-                    data-id="${app.documentId}"
-                    data-action="view"
-                >
-                    View
-                </button>
-
-                <button
-                    class="delete-btn"
-                    data-id="${app.documentId}"
-                    data-action="delete"
-                >
-                    Delete
-                </button>
-
-            </td>
-
-        `;
-
-
-        table.appendChild(row);
-
-    });
-
-
-    updateStatistics();
+return;
 
 }
 
 
-/* TABLE ACTIONS */
+data.forEach(
+function(app){
 
-document
-.getElementById("applicationTable")
-.addEventListener(
-"click",
-function(event){
+const row =
+document.createElement("tr");
 
-    const button =
-    event.target.closest("button");
+row.innerHTML = `
 
+<td>${escapeHTML(app.applicationId || "")}</td>
 
-    if(!button)
-        return;
+<td>${escapeHTML(app.name || "")}</td>
 
+<td>${escapeHTML(app.mobile || "")}</td>
 
-    const id =
-    button.dataset.id;
+<td>${escapeHTML(app.district || "")}</td>
 
+<td>
 
-    if(button.dataset.action === "view"){
+<span class="status ${statusClass(app.status)}">
 
-        viewApplication(id);
+${escapeHTML(app.status || "Pending")}
 
-    }
+</span>
 
+</td>
 
-    if(button.dataset.action === "delete"){
+<td>
 
-        deleteApplication(id);
+<button
+class="view-btn"
+onclick="viewApplication('${app.documentId}')"
+>
+View
+</button>
 
-    }
+<button
+class="delete-btn"
+onclick="deleteApplication('${app.documentId}')"
+>
+Delete
+</button>
+
+</td>
+
+`;
+
+table.appendChild(row);
 
 });
 
-
-/* VIEW */
-
-function viewApplication(documentId){
-
-    const app =
-    applications.find(
-        item =>
-        item.documentId === documentId
-    );
-
-
-    if(!app)
-        return;
-
-
-    selectedDocumentId =
-    documentId;
-
-
-    const details =
-    document.getElementById(
-        "applicationDetails"
-    );
-
-
-    details.innerHTML = `
-
-        ${detail(
-            "Application ID",
-            app.applicationId
-        )}
-
-        ${detail(
-            "Name",
-            app.name
-        )}
-
-        ${detail(
-            "Father / Husband Name",
-            app.fatherName
-        )}
-
-        ${detail(
-            "Date of Birth",
-            app.dob
-        )}
-
-        ${detail(
-            "Gender",
-            app.gender
-        )}
-
-        ${detail(
-            "Mobile",
-            app.mobile
-        )}
-
-        ${detail(
-            "Ration Card",
-            app.rationCard
-        )}
-
-        ${detail(
-            "Family Members",
-            app.familyMembers
-        )}
-
-        ${detail(
-            "District",
-            app.district
-        )}
-
-        ${detail(
-            "Address",
-            app.address
-        )}
-
-        ${detail(
-            "Aadhaar",
-            app.aadhaar
-        )}
-
-    `;
-
-
-    document.getElementById(
-        "statusSelect"
-    ).value =
-    app.status || "Pending";
-
-
-    document.getElementById(
-        "detailsModal"
-    ).style.display =
-    "block";
+updateStatistics();
 
 }
 
 
-/* DETAIL */
+/* STATISTICS */
 
-function detail(label,value){
+function updateStatistics(){
 
-    return `
+document.getElementById(
+"totalCount"
+).textContent =
+applications.length;
 
-        <div class="detail">
+document.getElementById(
+"pendingCount"
+).textContent =
+applications.filter(
+a => a.status === "Pending"
+).length;
 
-            <strong>
-                ${escapeHTML(label)}
-            </strong>
+document.getElementById(
+"verifiedCount"
+).textContent =
+applications.filter(
+a => a.status === "Verified"
+).length;
 
-            ${escapeHTML(value || "")}
-
-        </div>
-
-    `;
+document.getElementById(
+"rejectedCount"
+).textContent =
+applications.filter(
+a => a.status === "Rejected"
+).length;
 
 }
 
 
 /* STATUS CLASS */
 
-function getStatusClass(status){
+function statusClass(status){
 
-    if(status === "Verified")
-        return "verified";
+if(status === "Verified")
+return "verified";
 
-    if(status === "Rejected")
-        return "rejected";
+if(status === "Rejected")
+return "rejected";
 
-    return "pending";
+return "pending";
 
 }
 
 
-/* UPDATE STATUS */
+/* VIEW */
+
+window.viewApplication =
+function(documentId){
+
+const app =
+applications.find(
+a => a.documentId === documentId
+);
+
+if(!app)
+return;
+
+selectedDocumentId =
+documentId;
+
+const details =
+document.getElementById(
+"applicationDetails"
+);
+
+details.innerHTML = `
+
+<div class="detail">
+<strong>Application ID</strong>
+${escapeHTML(app.applicationId || "")}
+</div>
+
+<div class="detail">
+<strong>Name</strong>
+${escapeHTML(app.name || "")}
+</div>
+
+<div class="detail">
+<strong>Father / Husband Name</strong>
+${escapeHTML(app.fatherName || "")}
+</div>
+
+<div class="detail">
+<strong>Date of Birth</strong>
+${escapeHTML(app.dob || "")}
+</div>
+
+<div class="detail">
+<strong>Gender</strong>
+${escapeHTML(app.gender || "")}
+</div>
+
+<div class="detail">
+<strong>Mobile</strong>
+${escapeHTML(app.mobile || "")}
+</div>
+
+<div class="detail">
+<strong>Ration Card</strong>
+${escapeHTML(app.rationCard || "")}
+</div>
+
+<div class="detail">
+<strong>Family Members</strong>
+${escapeHTML(app.familyMembers || "")}
+</div>
+
+<div class="detail">
+<strong>District</strong>
+${escapeHTML(app.district || "")}
+</div>
+
+<div class="detail">
+<strong>Address</strong>
+${escapeHTML(app.address || "")}
+</div>
+
+<div class="detail">
+<strong>Aadhaar</strong>
+${escapeHTML(app.aadhaar || "")}
+</div>
+
+`;
+
+document.getElementById(
+"statusSelect"
+).value =
+app.status || "Pending";
+
+document.getElementById(
+"detailsModal"
+).style.display =
+"block";
+
+};
+
+
+/* UPDATE */
 
 document
 .getElementById("updateStatusButton")
@@ -1145,112 +932,99 @@ document
 "click",
 async function(){
 
-    if(!selectedDocumentId)
-        return;
+if(!selectedDocumentId)
+return;
 
+const newStatus =
+document.getElementById(
+"statusSelect"
+).value;
 
-    const newStatus =
-    document.getElementById(
-        "statusSelect"
-    ).value;
+try{
 
+await updateDoc(
 
-    try{
+doc(
+db,
+"applications",
+selectedDocumentId
+),
 
-        await updateDoc(
+{
+status:newStatus
+}
 
-            doc(
-                db,
-                "applications",
-                selectedDocumentId
-            ),
+);
 
-            {
-                status:newStatus
-            }
+alert(
+"Status updated successfully."
+);
 
-        );
+closeModal();
 
+loadApplications();
 
-        alert(
-            "Application status updated."
-        );
+}
 
+catch(error){
 
-        closeModal();
+console.error(error);
 
-        await loadApplications();
+alert(
+"Unable to update status."
+);
 
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        alert(
-            "Unable to update status."
-        );
-
-    }
+}
 
 });
 
 
 /* DELETE */
 
-async function deleteApplication(documentId){
+window.deleteApplication =
+async function(documentId){
 
-    const app =
-    applications.find(
-        item =>
-        item.documentId === documentId
-    );
+const app =
+applications.find(
+a => a.documentId === documentId
+);
 
+if(!app)
+return;
 
-    if(!app)
-        return;
+if(!confirm(
+"Delete application " +
+(app.applicationId || "") +
+"?"))
+return;
 
+try{
 
-    const confirmed =
-    confirm(
-        "Delete application " +
-        (app.applicationId || "") +
-        "?"
-    );
+await deleteDoc(
 
+doc(
+db,
+"applications",
+documentId
+)
 
-    if(!confirmed)
-        return;
+);
 
-
-    try{
-
-        await deleteDoc(
-
-            doc(
-                db,
-                "applications",
-                documentId
-            )
-
-        );
-
-
-        await loadApplications();
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        alert(
-            "Unable to delete application."
-        );
-
-    }
+loadApplications();
 
 }
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Unable to delete application."
+);
+
+}
+
+};
 
 
 /* SEARCH */
@@ -1261,82 +1035,84 @@ document
 "input",
 function(){
 
-    const search =
-    this.value
-    .trim()
-    .toLowerCase();
+const search =
+this.value
+.toLowerCase()
+.trim();
 
+const filtered =
+applications.filter(
+function(app){
 
-    const filtered =
-    applications.filter(
-    function(app){
+return (
 
-        return (
+String(
+app.applicationId || ""
+)
+.toLowerCase()
+.includes(search)
 
-            String(
-                app.applicationId || ""
-            )
-            .toLowerCase()
-            .includes(search)
+||
 
-            ||
+String(
+app.name || ""
+)
+.toLowerCase()
+.includes(search)
 
-            String(
-                app.name || ""
-            )
-            .toLowerCase()
-            .includes(search)
+||
 
-            ||
+String(
+app.mobile || ""
+)
+.includes(search)
 
-            String(
-                app.mobile || ""
-            )
-            .includes(search)
+||
 
-            ||
+String(
+app.district || ""
+)
+.toLowerCase()
+.includes(search)
 
-            String(
-                app.district || ""
-            )
-            .toLowerCase()
-            .includes(search)
+);
 
-        );
+});
 
-    });
-
-
-    displayApplications(
-        filtered
-    );
+displayApplications(
+filtered
+);
 
 });
 
 
 /* REFRESH */
 
-refreshButton.addEventListener(
+document
+.getElementById("refreshButton")
+.addEventListener(
 "click",
 function(){
 
-    loadApplications();
+loadApplications();
 
 });
 
 
 /* LOGOUT */
 
-logoutButton.addEventListener(
+document
+.getElementById("logoutButton")
+.addEventListener(
 "click",
-async function(){
+function(){
 
-    await signOut(auth);
+signOut(auth);
 
 });
 
 
-/* CLOSE MODAL */
+/* CLOSE */
 
 document
 .getElementById("closeModal")
@@ -1348,46 +1124,28 @@ closeModal
 
 function closeModal(){
 
-    document.getElementById(
-        "detailsModal"
-    ).style.display =
-    "none";
+document.getElementById(
+"detailsModal"
+).style.display =
+"none";
 
-    selectedDocumentId =
-    null;
+selectedDocumentId =
+null;
 
 }
 
 
-window.addEventListener(
-"click",
-function(event){
-
-    const modal =
-    document.getElementById(
-        "detailsModal"
-    );
-
-
-    if(event.target === modal){
-
-        closeModal();
-
-    }
-
-});
-
-
-/* SECURITY: ESCAPE DISPLAYED TEXT */
+/* ESCAPE HTML */
 
 function escapeHTML(value){
 
-    return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(value)
+
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
