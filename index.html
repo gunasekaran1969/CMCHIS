@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,20 +102,23 @@ textarea{
 button{
     width:100%;
     padding:15px;
-    background:#1565c0;
-    color:white;
     border:none;
     border-radius:30px;
-    font-size:18px;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
 }
 
-button:hover{
+.submit-button{
+    background:#1565c0;
+    color:white;
+}
+
+.submit-button:hover{
     background:#0d47a1;
 }
 
-button:disabled{
+.submit-button:disabled{
     background:#999;
     cursor:not-allowed;
 }
@@ -134,6 +136,7 @@ button:disabled{
     font-size:20px;
     font-weight:bold;
     color:#1b5e20;
+    word-break:break-word;
 }
 
 .error{
@@ -146,6 +149,36 @@ button:disabled{
     color:#b71c1c;
 }
 
+.action-card{
+    text-align:center;
+}
+
+.action-button{
+    display:block;
+    text-decoration:none;
+    padding:14px;
+    margin:10px 0;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.status-button{
+    background:#1976d2;
+    color:white;
+}
+
+.admin-button{
+    background:#eeeeee;
+    color:#444;
+    border:1px solid #ccc;
+}
+
+.home-note{
+    font-size:12px;
+    color:#666;
+    margin-top:15px;
+}
+
 footer{
     text-align:center;
     padding:20px;
@@ -156,30 +189,9 @@ footer{
 </style>
 
 </head>
-<!-- ADMIN LOGIN -->
 
-<div style="
-    text-align:center;
-    margin:30px 0 15px;
-">
-
-    <a
-        href="admin.html"
-        style="
-            display:inline-block;
-            padding:10px 18px;
-            background:#eeeeee;
-            color:#555;
-            text-decoration:none;
-            border-radius:20px;
-            font-size:13px;
-        "
-    >
-        🔐 Admin Login
-    </a>
-
-</div>
 <body>
+
 
 <header>
 
@@ -202,16 +214,16 @@ Tamil Nadu Chief Minister's Comprehensive Health Insurance Scheme
 This is an application-assistance website and is not an
 official Government of Tamil Nadu website.
 
-Do not enter real Aadhaar, medical or other sensitive information
-until the security configuration has been completed.
+For testing, please do not enter real Aadhaar or other
+sensitive personal information.
 
 </div>
 
 
+<!-- APPLICATION FORM -->
+
 <form id="cmchisForm">
 
-
-<!-- APPLICANT -->
 
 <div class="card">
 
@@ -295,7 +307,7 @@ required
 </div>
 
 
-<!-- FAMILY -->
+<!-- FAMILY DETAILS -->
 
 <div class="card">
 
@@ -394,7 +406,7 @@ required
 
 <div class="card">
 
-<h2>3. Identification Details</h2>
+<h2>3. Identification</h2>
 
 
 <label>
@@ -413,9 +425,6 @@ placeholder="12 digit Aadhaar number"
 <div class="warning">
 
 For testing, please leave Aadhaar blank.
-
-We will configure proper security and authentication
-before using real applicant information.
 
 </div>
 
@@ -441,12 +450,12 @@ I confirm that the information provided by me is correct.
 
 </label>
 
-
-<br>
+<br><br>
 
 
 <button
 type="submit"
+class="submit-button"
 id="submitButton"
 >
 
@@ -469,7 +478,7 @@ Your application has been recorded.
 </p>
 
 <p>
-Application ID:
+<strong>Application ID:</strong>
 </p>
 
 <div
@@ -478,7 +487,7 @@ id="applicationId"
 ></div>
 
 <p>
-Please save this Application ID.
+Please save this Application ID to check your application status.
 </p>
 
 </div>
@@ -493,6 +502,43 @@ id="errorMessage"
 
 
 </form>
+
+
+<!-- ACTIONS -->
+
+<div class="card action-card">
+
+<h2>Application Services</h2>
+
+
+<a
+href="status.html"
+class="action-button status-button"
+>
+
+🔎 Check Application Status
+
+</a>
+
+
+<a
+href="admin.html"
+class="action-button admin-button"
+>
+
+🔐 Admin Login
+
+</a>
+
+
+<p class="home-note">
+
+Admin Login requires authorized Firebase credentials.
+
+</p>
+
+</div>
+
 
 </div>
 
@@ -510,41 +556,47 @@ This website is not an official Government of Tamil Nadu website.
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-    getFirestore,
-    collection,
-    addDoc
+initializeApp
 }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
-/* FIREBASE CONFIGURATION */
+import {
+getFirestore,
+collection,
+addDoc
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyABdobLpFZ6WaJ4kE8HQZMBmTUmfRJCbJY",
+apiKey:
+"AIzaSyABdobLpFZ6WaJ4kE8HQZMBmTUmfRJCbJY",
 
-    authDomain:
-    "cmchis-online-application.firebaseapp.com",
+authDomain:
+"cmchis-online-application.firebaseapp.com",
 
-    projectId:
-    "cmchis-online-application",
+projectId:
+"cmchis-online-application",
 
-    storageBucket:
-    "cmchis-online-application.firebasestorage.app",
+storageBucket:
+"cmchis-online-application.firebasestorage.app",
 
-    messagingSenderId:
-    "275696534195",
+messagingSenderId:
+"275696534195",
 
-    appId:
-    "1:275696534195:web:f381966c7b5c44036a26c6",
+appId:
+"1:275696534195:web:f381966c7b5c44036a26c6",
 
-    measurementId:
-    "G-RSY7T0RVTD"
+measurementId:
+"G-RSY7T0RVTD"
 
 };
 
@@ -554,9 +606,6 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
-
-/* INITIALIZE FIRESTORE */
-
 const db =
 getFirestore(app);
 
@@ -564,19 +613,29 @@ getFirestore(app);
 /* FORM */
 
 const form =
-document.getElementById("cmchisForm");
+document.getElementById(
+"cmchisForm"
+);
 
 const submitButton =
-document.getElementById("submitButton");
+document.getElementById(
+"submitButton"
+);
 
 const successMessage =
-document.getElementById("successMessage");
+document.getElementById(
+"successMessage"
+);
 
 const errorMessage =
-document.getElementById("errorMessage");
+document.getElementById(
+"errorMessage"
+);
 
-const applicationId =
-document.getElementById("applicationId");
+const applicationIdElement =
+document.getElementById(
+"applicationId"
+);
 
 
 /* SUBMIT */
@@ -585,129 +644,187 @@ form.addEventListener(
 "submit",
 async function(event){
 
-    event.preventDefault();
+event.preventDefault();
 
 
-    submitButton.disabled = true;
+submitButton.disabled =
+true;
 
-    submitButton.textContent =
-    "Submitting...";
+submitButton.textContent =
+"Submitting...";
 
-    errorMessage.style.display =
-    "none";
-
-
-    try{
-
-        const applicationNumber =
-
-        "CMCHIS-" +
-        new Date().getFullYear() +
-        "-" +
-        Math.floor(
-            100000 +
-            Math.random() * 900000
-        );
+errorMessage.style.display =
+"none";
 
 
-        const applicationData = {
-
-            applicationId:
-            applicationNumber,
-
-            name:
-            document.getElementById("name").value.trim(),
-
-            fatherName:
-            document.getElementById("fatherName").value.trim(),
-
-            dob:
-            document.getElementById("dob").value,
-
-            gender:
-            document.getElementById("gender").value,
-
-            mobile:
-            document.getElementById("mobile").value.trim(),
-
-            rationCard:
-            document.getElementById("rationCard").value.trim(),
-
-            familyMembers:
-            document.getElementById("familyMembers").value,
-
-            district:
-            document.getElementById("district").value,
-
-            address:
-            document.getElementById("address").value.trim(),
-
-            aadhaar:
-            document.getElementById("aadhaar").value.trim(),
-
-            status:
-            "Pending",
-
-            submittedAt:
-            new Date().toISOString()
-
-        };
+try{
 
 
-        /* SAVE TO FIRESTORE */
+/* GENERATE APPLICATION ID */
 
-        await addDoc(
-            collection(db,"applications"),
-            applicationData
-        );
+const applicationNumber =
 
-
-        /* SHOW SUCCESS */
-
-        applicationId.textContent =
-        applicationNumber;
-
-        successMessage.style.display =
-        "block";
-
-        submitButton.style.display =
-        "none";
+"CMCHIS-" +
+new Date().getFullYear() +
+"-" +
+Math.floor(
+100000 +
+Math.random() * 900000
+);
 
 
-        window.scrollTo({
+/* APPLICATION DATA */
 
-            top:
-            document.body.scrollHeight,
+const applicationData = {
 
-            behavior:
-            "smooth"
+applicationId:
+applicationNumber,
 
-        });
+name:
+document.getElementById(
+"name"
+).value.trim(),
+
+fatherName:
+document.getElementById(
+"fatherName"
+).value.trim(),
+
+dob:
+document.getElementById(
+"dob"
+).value,
+
+gender:
+document.getElementById(
+"gender"
+).value,
+
+mobile:
+document.getElementById(
+"mobile"
+).value.trim(),
+
+rationCard:
+document.getElementById(
+"rationCard"
+).value.trim(),
+
+familyMembers:
+document.getElementById(
+"familyMembers"
+).value,
+
+district:
+document.getElementById(
+"district"
+).value,
+
+address:
+document.getElementById(
+"address"
+).value.trim(),
+
+aadhaar:
+document.getElementById(
+"aadhaar"
+).value.trim(),
+
+status:
+"Pending",
+
+submittedAt:
+new Date().toISOString()
+
+};
 
 
-    }
+/* SAVE PRIVATE APPLICATION */
 
-    catch(error){
+await addDoc(
 
-        console.error(error);
+collection(
+db,
+"applications"
+),
 
-        errorMessage.textContent =
+applicationData
 
-        "Application could not be submitted. " +
-        "Please check your Firebase Firestore rules and try again.";
-
-
-        errorMessage.style.display =
-        "block";
+);
 
 
-        submitButton.disabled =
-        false;
+/*
+CREATE PUBLIC STATUS RECORD
 
-        submitButton.textContent =
-        "Submit Application";
+Only application ID and status
+are stored here.
+*/
 
-    }
+await addDoc(
+
+collection(
+db,
+"publicStatus"
+),
+
+{
+
+applicationId:
+applicationNumber,
+
+status:
+"Pending"
+
+}
+
+);
+
+
+/* SHOW SUCCESS */
+
+applicationIdElement.textContent =
+applicationNumber;
+
+successMessage.style.display =
+"block";
+
+submitButton.style.display =
+"none";
+
+
+window.scrollTo({
+
+top:
+document.body.scrollHeight,
+
+behavior:
+"smooth"
+
+});
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+errorMessage.textContent =
+
+"Application could not be submitted. " +
+"Please check your Firebase configuration and Firestore rules.";
+
+errorMessage.style.display =
+"block";
+
+
+submitButton.disabled =
+false;
+
+submitButton.textContent =
+"Submit Application";
+
+}
 
 });
 
@@ -716,4 +833,3 @@ async function(event){
 
 </body>
 </html>
-```
