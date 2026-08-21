@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check CMCHIS Application Status</title>
+<title>CMCHIS Application Status</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -39,14 +41,8 @@ header h1{
 }
 
 h2{
-    color:#0d47a1;
     text-align:center;
-}
-
-label{
-    display:block;
-    font-weight:bold;
-    margin-top:20px;
+    color:#0d47a1;
 }
 
 input{
@@ -67,28 +63,23 @@ button{
     border-radius:25px;
     background:#1565c0;
     color:white;
-    font-size:17px;
+    font-size:16px;
     font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#0d47a1;
 }
 
 .result{
     display:none;
     margin-top:25px;
     padding:18px;
-    border-radius:10px;
     background:#e3f2fd;
+    border-radius:10px;
 }
 
 .status{
     text-align:center;
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
-    margin:15px 0;
+    margin-top:12px;
 }
 
 .pending{
@@ -112,23 +103,16 @@ button:hover{
     border-radius:8px;
 }
 
-.home{
+a{
+    display:block;
     text-align:center;
     margin-top:25px;
-}
-
-.home a{
     color:#1565c0;
     text-decoration:none;
 }
 
-footer{
-    text-align:center;
-    padding:20px;
-    color:#666;
-    font-size:13px;
-}
 </style>
+
 </head>
 
 <body>
@@ -148,14 +132,14 @@ footer{
 
 <h2>Check Status</h2>
 
-<label>
-Application ID
-</label>
+<p>
+Enter your Application ID:
+</p>
 
 <input
 type="text"
 id="applicationId"
-placeholder="Example: CMCHIS-2026-278677"
+placeholder="CMCHIS-2026-123456"
 >
 
 <button id="checkButton">
@@ -163,49 +147,42 @@ Check Application Status
 </button>
 
 
-<div class="error" id="errorMessage"></div>
+<div
+id="errorMessage"
+class="error"
+></div>
 
 
-<div class="result" id="result">
+<div
+id="result"
+class="result"
+>
 
-<p>
 <strong>Application ID:</strong>
-</p>
 
 <p id="resultId"></p>
 
-<p>
-<strong>Application Status:</strong>
-</p>
+<strong>Status:</strong>
 
 <div
-class="status"
 id="status"
+class="status"
 ></div>
 
 </div>
 
 
-<div class="home">
-
 <a href="index.html">
 ← Back to Application
+</a>
+
+<a href="admin.html">
+🔐 Admin Login
 </a>
 
 </div>
 
 </div>
-
-</div>
-
-
-<footer>
-
-CMCHIS Application Assistance Portal<br>
-
-This website is not an official Government of Tamil Nadu website.
-
-</footer>
 
 
 <script type="module">
@@ -215,7 +192,6 @@ initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 
 import {
 getFirestore,
@@ -271,39 +247,39 @@ checkStatus
 
 async function checkStatus(){
 
-const id =
+const applicationId =
 document
 .getElementById("applicationId")
 .value
 .trim();
 
 
-const error =
+const errorBox =
 document
 .getElementById("errorMessage");
 
-const result =
+const resultBox =
 document
 .getElementById("result");
 
-const status =
+const statusBox =
 document
 .getElementById("status");
 
 
-error.style.display =
+errorBox.style.display =
 "none";
 
-result.style.display =
+resultBox.style.display =
 "none";
 
 
-if(!id){
+if(applicationId === ""){
 
-error.textContent =
+errorBox.textContent =
 "Please enter your Application ID.";
 
-error.style.display =
+errorBox.style.display =
 "block";
 
 return;
@@ -313,21 +289,19 @@ return;
 
 try{
 
-const applicationsRef =
+const q = query(
+
 collection(
 db,
-"applications"
-);
+"publicStatus"
+),
 
-
-const q =
-query(
-applicationsRef,
 where(
 "applicationId",
 "==",
-id
+applicationId
 )
+
 );
 
 
@@ -337,10 +311,10 @@ await getDocs(q);
 
 if(snapshot.empty){
 
-error.textContent =
+errorBox.textContent =
 "Application ID not found. Please check the ID and try again.";
 
-error.style.display =
+errorBox.style.display =
 "block";
 
 return;
@@ -348,79 +322,76 @@ return;
 }
 
 
-let application;
+let status =
+"Pending";
 
 
 snapshot.forEach(
-doc => {
+function(doc){
 
-application =
+const data =
 doc.data();
 
-});
-
-
-const currentStatus =
-application.status ||
+status =
+data.status ||
 "Pending";
+
+});
 
 
 document.getElementById(
 "resultId"
 ).textContent =
-id;
+applicationId;
 
 
-status.textContent =
-currentStatus;
+statusBox.textContent =
+status;
 
 
-status.className =
+statusBox.className =
 "status";
 
 
-if(currentStatus === "Verified"){
+if(status === "Verified"){
 
-status.classList.add(
+statusBox.classList.add(
 "verified"
 );
 
 }
+else if(status === "Rejected"){
 
-else if(currentStatus === "Rejected"){
-
-status.classList.add(
+statusBox.classList.add(
 "rejected"
 );
 
 }
-
 else{
 
-status.classList.add(
+statusBox.classList.add(
 "pending"
 );
 
 }
 
 
-result.style.display =
+resultBox.style.display =
 "block";
 
 }
 
 catch(error){
 
-console.error(error);
+console.error(
+"STATUS ERROR:",
+error
+);
 
-document.getElementById(
-"errorMessage"
-).textContent =
-"Unable to check status. Please try again.";
+errorBox.textContent =
+"Unable to check status. Please make sure Firestore Rules are published.";
 
-document.getElementById(
-"errorMessage"
-).style.display =
+errorBox.style.display =
 "block";
 
 }
