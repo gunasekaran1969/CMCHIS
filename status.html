@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Check CMCHIS Application Status</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f6fb;
+}
+
+header{
+    background:linear-gradient(135deg,#0d47a1,#1976d2);
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+}
+
+header h1{
+    margin:0;
+    font-size:24px;
+}
+
+.container{
+    max-width:500px;
+    margin:35px auto;
+    padding:15px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+h2{
+    color:#0d47a1;
+    text-align:center;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+input{
+    width:100%;
+    padding:13px;
+    margin-top:8px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:0;
+    border-radius:25px;
+    background:#1565c0;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0d47a1;
+}
+
+.result{
+    display:none;
+    margin-top:25px;
+    padding:18px;
+    border-radius:10px;
+    background:#e3f2fd;
+}
+
+.status{
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.pending{
+    color:#f57c00;
+}
+
+.verified{
+    color:#2e7d32;
+}
+
+.rejected{
+    color:#c62828;
+}
+
+.error{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    background:#ffebee;
+    color:#c62828;
+    border-radius:8px;
+}
+
+.home{
+    text-align:center;
+    margin-top:25px;
+}
+
+.home a{
+    color:#1565c0;
+    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>CMCHIS Application Status</h1>
+
+<p>Check your application status</p>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+<h2>Check Status</h2>
+
+<label>
+Application ID
+</label>
+
+<input
+type="text"
+id="applicationId"
+placeholder="Example: CMCHIS-2026-278677"
+>
+
+<button id="checkButton">
+Check Application Status
+</button>
+
+
+<div class="error" id="errorMessage"></div>
+
+
+<div class="result" id="result">
+
+<p>
+<strong>Application ID:</strong>
+</p>
+
+<p id="resultId"></p>
+
+<p>
+<strong>Application Status:</strong>
+</p>
+
+<div
+class="status"
+id="status"
+></div>
+
+</div>
+
+
+<div class="home">
+
+<a href="index.html">
+← Back to Application
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+CMCHIS Application Assistance Portal<br>
+
+This website is not an official Government of Tamil Nadu website.
+
+</footer>
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import {
+getFirestore,
+collection,
+query,
+where,
+getDocs
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyABdobLpFZ6WaJ4kE8HQZMBmTUmfRJCbJY",
+
+authDomain:
+"cmchis-online-application.firebaseapp.com",
+
+projectId:
+"cmchis-online-application",
+
+storageBucket:
+"cmchis-online-application.firebasestorage.app",
+
+messagingSenderId:
+"275696534195",
+
+appId:
+"1:275696534195:web:f381966c7b5c44036a26c6",
+
+measurementId:
+"G-RSY7T0RVTD"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+
+document
+.getElementById("checkButton")
+.addEventListener(
+"click",
+checkStatus
+);
+
+
+async function checkStatus(){
+
+const id =
+document
+.getElementById("applicationId")
+.value
+.trim();
+
+
+const error =
+document
+.getElementById("errorMessage");
+
+const result =
+document
+.getElementById("result");
+
+const status =
+document
+.getElementById("status");
+
+
+error.style.display =
+"none";
+
+result.style.display =
+"none";
+
+
+if(!id){
+
+error.textContent =
+"Please enter your Application ID.";
+
+error.style.display =
+"block";
+
+return;
+
+}
+
+
+try{
+
+const applicationsRef =
+collection(
+db,
+"applications"
+);
+
+
+const q =
+query(
+applicationsRef,
+where(
+"applicationId",
+"==",
+id
+)
+);
+
+
+const snapshot =
+await getDocs(q);
+
+
+if(snapshot.empty){
+
+error.textContent =
+"Application ID not found. Please check the ID and try again.";
+
+error.style.display =
+"block";
+
+return;
+
+}
+
+
+let application;
+
+
+snapshot.forEach(
+doc => {
+
+application =
+doc.data();
+
+});
+
+
+const currentStatus =
+application.status ||
+"Pending";
+
+
+document.getElementById(
+"resultId"
+).textContent =
+id;
+
+
+status.textContent =
+currentStatus;
+
+
+status.className =
+"status";
+
+
+if(currentStatus === "Verified"){
+
+status.classList.add(
+"verified"
+);
+
+}
+
+else if(currentStatus === "Rejected"){
+
+status.classList.add(
+"rejected"
+);
+
+}
+
+else{
+
+status.classList.add(
+"pending"
+);
+
+}
+
+
+result.style.display =
+"block";
+
+}
+
+catch(error){
+
+console.error(error);
+
+document.getElementById(
+"errorMessage"
+).textContent =
+"Unable to check status. Please try again.";
+
+document.getElementById(
+"errorMessage"
+).style.display =
+"block";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
